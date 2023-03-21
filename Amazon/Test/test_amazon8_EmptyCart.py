@@ -5,13 +5,15 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from Amazon.Pages.home_page import HomePage
 
 
 @pytest.mark.usefixtures("setup")
-class Test9:
+class Test8:
     def test_cart(self):
+        homepage = HomePage(self.driver)
         time.sleep(2)
-        self.drive.find_element(By.ID, "nav-cart-count-container").click()
+        homepage.cart_click()
         assert (self.driver.page_source.find("Cart is empty"))
 
 
