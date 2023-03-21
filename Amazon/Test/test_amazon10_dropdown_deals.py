@@ -5,12 +5,15 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from Amazon.Pages.home_page import HomePage
 
 @pytest.mark.usefixtures("setup")
-class Test6:
-    def test_laptop_neg(self):
-        self.driver.find_element(By.ID, "twotabsearchtextbox").send_keys("laptop")
-        self.driver.find_element(By.ID, "nav-search-submit-button").click()
-        time.sleep(2)  #
-        assert (self.driver.page_source.find("xyzqwe"))
+class Test10:
+    def test_deals(self):
+        homepage = HomePage(self.driver)
+        time.sleep(1)
+        homepage.drop_down_select("Deals")
+        homepage.search_submit()
+        assert (self.driver.page_source.find("Deals"))
+
+
